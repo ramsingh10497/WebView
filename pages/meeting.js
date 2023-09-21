@@ -547,82 +547,6 @@ const Meeting = ({isValidMeeting,query,endMeeting,user,profile,clearMessages,upd
                   >
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                   </div>
-                  {showInfo && (
-                    <div className={styles.infoModal}>
-                      <i
-                        class="fa fa-times"
-                        aria-hidden="true"
-                        onClick={() => {
-                          setShowInfo(false);
-                        }}
-                      ></i>
-                      <div className={styles.infoHeading}>Meeting Details</div>
-                      <p className={styles.started}>
-                        Meeting started{" "}
-                        {moment(new Date(meeting.datetime)).fromNow()}
-                      </p>
-
-                      <p>
-                        <strong>Title</strong> : {meeting.title}
-                      </p>
-                      <p>
-                        <strong>Host</strong> : {meeting.hostName}
-                      </p>
-                      <p>
-                        <strong>User Activity Log</strong>
-                      </p>
-                      <div className={styles.userList}>
-                        {users &&
-                          users.map((u) => (
-                            <div className={styles.userListUser}>
-                              <p>
-                                <strong>
-                                  {u.uid == user.uid ? "You" : u.name}
-                                </strong>{" "}
-                                <span>
-                                  {u.type === "join" ? "joined" : "left"} at{" "}
-                                  {moment(u.datetime).format("LT")}
-                                </span>
-                              </p>
-                            </div>
-                          ))}
-                      </div>
-                      <div className={styles.socialShare}>
-                        <p>Share meeting invite</p>
-                        <div className={styles.socialIcons}>
-                          <WhatsappShareButton
-                            className={styles.socialIcon}
-                            url={"https://localhost:3000"}
-                            title={invite}
-                          >
-                            <WhatsappIcon size={40} borderRadius={20} />
-                          </WhatsappShareButton>{" "}
-                          <TelegramShareButton
-                            className={styles.socialIcon}
-                            url={"https://localhost:3000"}
-                            title={invite}
-                          >
-                            <TelegramIcon size={40} borderRadius={20} />
-                          </TelegramShareButton>{" "}
-                          <FacebookShareButton
-                            className={styles.socialIcon}
-                            url={"https://localhost:3000"}
-                            quote={invite}
-                          >
-                            <FacebookIcon size={40} borderRadius={20} />
-                          </FacebookShareButton>{" "}
-                          <LinkedinShareButton
-                            className={styles.socialIcon}
-                            url={"https://localhost:3000"}
-                            source={"https://localhost:3000"}
-                            quote={invite}
-                          >
-                            <LinkedinIcon size={40} borderRadius={20} />
-                          </LinkedinShareButton>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
                 <div className={styles.meeting}>
                   <div className={`${styles.videoBox} videoBox`}>
@@ -634,20 +558,6 @@ const Meeting = ({isValidMeeting,query,endMeeting,user,profile,clearMessages,upd
                     </div>
                     <div className={`${styles.videos} videos`}></div>
                     <div className={styles.controls}>
-                      <div
-                        className={styles.controlBtn}
-                        onClick={fullScreenHandler}
-                      >
-                        <span className={styles.tooltip}>Full Screen</span>
-                        {!isFullScreen ? (
-                          <i class="fas fa-arrows-alt" aria-hidden="true"></i>
-                        ) : (
-                          <i
-                            class="fas fa-compress-arrows-alt"
-                            aria-hidden="true"
-                          ></i>
-                        )}
-                      </div>
                       <div
                         className={styles.controlBtn}
                         onClick={microphoneHandler}
@@ -690,26 +600,6 @@ const Meeting = ({isValidMeeting,query,endMeeting,user,profile,clearMessages,upd
                           <i class="fa fa-desktop" aria-hidden="true"></i>
                         ) : (
                           <i class="fa fa-times" aria-hidden="true"></i>
-                        )}
-                      </div>
-                      <div
-                        className={styles.controlBtn}
-                        onClick={screenRecordingHandler}
-                      >
-                        <span className={styles.tooltip}>Record Screen</span>
-                        {!isScreenRecording ? (
-                          <i class="fa fa-play-circle" aria-hidden="true"></i>
-                        ) : (
-                          <i class="fa fa-stop-circle" aria-hidden="true"></i>
-                        )}
-                      </div>
-
-                      <div className={styles.controlBtn} onClick={chatHandler}>
-                        <span className={styles.tooltip}>Chat</span>
-                        {!isChat ? (
-                          <i class="fas fa-comment-slash"></i>
-                        ) : (
-                          <i class="fas fa-comment"></i>
                         )}
                       </div>
                       <div

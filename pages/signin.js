@@ -3,14 +3,12 @@ import {connect} from 'react-redux';
 import {useRouter} from 'next/router';
 import BaseLayout from '../components/BaseLayout';
 import styles from '../styles/signin.module.css';
-import {signUpUser,signInUser,signInWithGoogle,signInWithFacebook} from '../redux/auth/actions';
+import {signUpUser,signInUser} from '../redux/auth/actions';
 import AuthContainer from "../components/AuthContainer";
 
 const SignIn = ({
   signUpUser,
   signInUser,
-  signInWithGoogle,
-  signInWithFacebook,
   auth,
 }) => {
   const { isAuthenticated } = auth;
@@ -44,16 +42,6 @@ const SignIn = ({
   const onSignInHandler = async (e) => {
     e.preventDefault();
     signInUser(signInData.email, signInData.password);
-  };
-
-  const googleSignInHandler = (e) => {
-    e.preventDefault();
-    signInWithGoogle();
-  };
-
-  const facebookSignInHandler = (e) => {
-    e.preventDefault();
-    signInWithFacebook();
   };
 
   const onChangeSignUpData = (e) => {
@@ -322,4 +310,4 @@ const mapStateToProps = ({auth})=>({
 	auth:auth
 });
 
-export default connect(mapStateToProps,{signInUser,signUpUser,signInWithGoogle,signInWithFacebook})(SignIn);
+export default connect(mapStateToProps,{signInUser,signUpUser})(SignIn);
