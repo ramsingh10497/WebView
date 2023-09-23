@@ -9,6 +9,7 @@
 
 ## About
 webview is a video conferencing platform with realtime chat abilities using WebRTC and Web Sockets.
+Live Url: https://web-view-hitesh.vercel.app/
 
 ## Technologies Used
 1. React.js
@@ -44,16 +45,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## UI Screenshots
 1. Dashboard
-![image](https://user-images.githubusercontent.com/54268438/114233878-9d1f8000-999b-11eb-98cb-93e535a9e90b.png)
+![Screenshot 2023-09-23 182039](https://github.com/ramsingh10497/WebView/assets/82999695/ede256ba-1e8a-47fa-9a5f-566fac93049d)
 
-2. Host Meeting
-![image](https://user-images.githubusercontent.com/54268438/114233971-ba544e80-999b-11eb-8988-c7f558e89133.png)
-
-3. Join Meeting
-![image](https://user-images.githubusercontent.com/54268438/114234019-cdffb500-999b-11eb-9c49-3e7c9796eb46.png)
+3. In Meeting
+![Screenshot 2023-09-23 182138](https://github.com/ramsingh10497/WebView/assets/82999695/99af072d-5ef7-4e03-a839-b3e23cbf25d5)
 
 4. My Meetings
-![image](https://user-images.githubusercontent.com/54268438/114234090-eb348380-999b-11eb-90f7-93b32a375b9e.png)
+![Screenshot 2023-09-23 182108](https://github.com/ramsingh10497/WebView/assets/82999695/750fe003-362a-4d49-ad4a-81e9459a411d)
 
 5. Login/Register
-![image](https://user-images.githubusercontent.com/54268438/114234163-069f8e80-999c-11eb-9b29-4741c68f98a3.png)
+![Screenshot 2023-09-23 181959](https://github.com/ramsingh10497/WebView/assets/82999695/c31f9ca8-5fc4-49a2-a1fd-b602f4cdd143)
