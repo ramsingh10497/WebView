@@ -3,17 +3,15 @@ import { connect } from 'react-redux';
 import {useRouter} from 'next/router';
 import styles from '../styles/Meetings.module.css';
 import moment from 'moment';
-import {FacebookShareButton,FacebookIcon,WhatsappShareButton,WhatsappIcon,TelegramShareButton,TelegramIcon,LinkedinShareButton,LinkedinIcon} from 'react-share';
 import HostModal from './HostModal';
 import DialogBox from './DialogBox';
 import { deleteMeeting,startMeeting,endMeeting } from '../redux/meeting/actions';
 import { clearMessages } from '../redux/messages/actions';
 
-const MeetingCard = ({meeting,user,deleteMeeting,startMeeting,endMeeting,clearMessages}) => {
+const MeetingCard = ({meeting,deleteMeeting,startMeeting}) => {
     const {title,datetime,id,password,createdAt,startedAt,endedAt} = meeting;
     const [showEdit,setShowEdit]= useState(false);
     const [showDelete,setShowDelete]= useState(false);
-    const invite = `*webview Meeting Invitation* \n\n ${user.name} is inviting you to attend a meeting. \n\n *Meeting Details* \n Title: ${title} \n Timing : ${datetime} \n ID : ${id} \n Password : ${password} \n\n\n Regards, \n *Team webview*`;
     const router = useRouter();
     const startMeetingHandler = async ()=>{
         if(!startedAt){
@@ -21,11 +19,6 @@ const MeetingCard = ({meeting,user,deleteMeeting,startMeeting,endMeeting,clearMe
         }
        router.push({pathname:'/meeting',query:{id:meeting.id,password:meeting.password}});
     }
-
-    // const endMeetingHandler = async ()=>{
-    //     await endMeeting(meeting);
-    //     clearMessages();
-    // }
     
     return (
         <>
@@ -46,9 +39,6 @@ const MeetingCard = ({meeting,user,deleteMeeting,startMeeting,endMeeting,clearMe
                     <div className={styles.startButton} onClick={startMeetingHandler}>
                         Join Now
                     </div>
-                    {/* <div className={styles.startButton} onClick={endMeetingHandler}>
-                        End Meeting
-                    </div> */}
                 </div>
                     }
                     </>
@@ -66,11 +56,6 @@ const MeetingCard = ({meeting,user,deleteMeeting,startMeeting,endMeeting,clearMe
                     </> }
                     <p className={styles.created}>created {moment(new Date(createdAt)).fromNow()}</p>
                 </div>
-                {!endedAt && 
-                <div className={styles.socialShare}>
-                <WhatsappShareButton className={styles.socialIcon} url={'https://localhost:3000'} title={invite}><WhatsappIcon size={40} borderRadius={20} /></WhatsappShareButton> <TelegramShareButton className={styles.socialIcon} url={'https://localhost:3000'} title={invite}><TelegramIcon size={40} borderRadius={20}/></TelegramShareButton> <FacebookShareButton className={styles.socialIcon} url={'https://localhost:3000'} quote={invite}><FacebookIcon size={40} borderRadius={20}/></FacebookShareButton> <LinkedinShareButton className={styles.socialIcon} url={'https://localhost:3000'} source={'https://localhost:3000'} quote={invite}><LinkedinIcon size={40} borderRadius={20}/></LinkedinShareButton>
-                </div>
-                }
             </div>
             <HostModal show={showEdit} onClose={()=>{setShowEdit(false)}} edit={true} mId={id}/>
             <DialogBox show={showDelete} clickOk={()=>{deleteMeeting(id);setShowDelete(false)}} clickCancel={()=>{setShowDelete(false)}} question={"Are you sure you want to delete the meeting?"} />

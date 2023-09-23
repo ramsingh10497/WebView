@@ -23,14 +23,4 @@ export const auth = firebase.auth();
 export const database = firebase.database();
 export const storage = firebase.storage();
 
-const googleProvider = new firebase.auth.GoogleAuthProvider();
-googleProvider.setCustomParameters({ prompt: 'select_account' });
-export const googleSignIn = () => auth.signInWithPopup(googleProvider);
-
-const facebookProvider = new firebase.auth.FacebookAuthProvider();
-facebookProvider.setCustomParameters({
-    'display': 'popup'
-  });
-export const facebookSignIn = () => auth.signInWithPopup(facebookProvider);
-
 export default firebase;
